@@ -260,6 +260,7 @@ android_library {
         "modules-utils-handlerexecutor",
         "modules-utils-list-slice",
         "telecom_module_bugfix_flags-java",
+        "libPhone2",
     ],
     libs: [
         "framework-telecom.impl",
