@@ -61,7 +61,7 @@ import com.android.server.telecom.flags.Flags;
 import com.android.server.telecom.util.CallLogUtils;
 import com.android.server.telecom.util.CallerInfo;
 
-import org.lineageos.lib.phone.SensitivePhoneNumbers;
+import io.github.dot166.libphone2.SensitivePhoneNumbers;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -145,7 +145,7 @@ public final class CallLogManager extends CallsManagerListenerBase {
         mAnomalyReporterAdapter = anomalyReporterAdapter;
         mCountryCodeExecutor = new HandlerExecutor(new Handler(Looper.getMainLooper()));
         mFeatureFlags = featureFlags;
-        mSensitivePhoneNumbers = SensitivePhoneNumbers.getInstance();
+        mSensitivePhoneNumbers = SensitivePhoneNumbers.Companion.getInstance();
     }
 
     @Override
