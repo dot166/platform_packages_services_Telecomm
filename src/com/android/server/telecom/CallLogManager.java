@@ -128,7 +128,6 @@ public final class CallLogManager extends CallsManagerListenerBase {
     private final Object mLock = new Object();
     private String mCurrentCountryIso;
     private HandlerExecutor mCountryCodeExecutor;
-    private SensitivePhoneNumbers mSensitivePhoneNumbers;
 
     private final FeatureFlags mFeatureFlags;
 
@@ -143,7 +142,6 @@ public final class CallLogManager extends CallsManagerListenerBase {
         mAnomalyReporterAdapter = anomalyReporterAdapter;
         mCountryCodeExecutor = new HandlerExecutor(new Handler(Looper.getMainLooper()));
         mFeatureFlags = featureFlags;
-        mSensitivePhoneNumbers = SensitivePhoneNumbers.Companion.getInstance();
     }
 
     @Override
@@ -541,7 +539,7 @@ public final class CallLogManager extends CallsManagerListenerBase {
         }
 
         // Don't log sensitive numbers.
-        boolean isSensitiveNumber = mSensitivePhoneNumbers.isSensitiveNumber(mContext, number,
+        boolean isSensitiveNumber = (new SensitivePhoneNumbers()).isSensitiveNumber(mContext, number,
                 subId);
 
         // Don't log emergency numbers if the device doesn't allow it.
